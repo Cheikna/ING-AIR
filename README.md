@@ -14,7 +14,7 @@ Une fenêtre devrait s'afficher pour vous demander d'ouvrir GitHubDesktop.exe. C
 ![](images/git_open_desktop.png)
 
 GitHubDesktop devrait s'ouvrir en vous demandant de choisir l'emplacement local que vous voulez pour le clonage. Choisissez l'emplacement que vous voulez.
-![](images/git_local_repos.png)
+![](images/git_local_repo.png)
 
 Enfin, ouvrir le fichier .sln pour commencer à travailler.
 
