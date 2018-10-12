@@ -10,6 +10,7 @@ Une fois le projet trouvé, cliquer sur 'Clone or download' puis 'Open in Deskto
 ![](images/git_clone.png)
 
 Une fenêtre devrait s'afficher pour vous demander d'ouvrir GitHubDesktop.exe. Cliquer sur Ouvrir
+
 ![](images/git_open_desktop.png)
 
 GitHubDesktop devrait s'ouvrir en vous demandant de choisir l'emplacement local que vous voulez pour le clonage. Choisissez l'emplacement que vous voulez.
