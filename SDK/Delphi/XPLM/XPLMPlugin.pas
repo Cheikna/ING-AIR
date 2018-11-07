@@ -29,7 +29,6 @@ USES   XPLMDefs;
 }
 
 
-
    {
     XPLMGetMyID
     
@@ -137,7 +136,6 @@ USES   XPLMDefs;
 }
 
 
-
    {
     XPLMIsPluginEnabled
     
@@ -214,9 +212,8 @@ USES   XPLMDefs;
    (e.g. be greater or equal to unsigned 0x8000000) while commands should have 
    this bit be cleared. 
    
-   The following messages are sent to your plugin by x-plane.                  
+   The following messages are sent to your plugin by X-Plane.                  
 }
-
 
 
 CONST
@@ -268,6 +265,20 @@ CONST
    XPLM_MSG_LIVERY_LOADED = 108;
 {$ENDIF}
 
+{$IFDEF XPLM301}
+    { Sent to your plugin right before X-Plane enters virtual reality mode (at    }
+    { which time any windows that are not positioned in VR mode will no longer be }
+    { visible to the user).                                                       }
+   XPLM_MSG_ENTERED_VR  = 109;
+{$ENDIF}
+
+{$IFDEF XPLM301}
+    { Sent to your plugin right before X-Plane leaves virtual reality mode (at    }
+    { which time you may want to clean up windows that are positioned in VR       }
+    { mode).                                                                      }
+   XPLM_MSG_EXITING_VR  = 110;
+{$ENDIF}
+
    {
     XPLMSendMessageToPlugin
     
@@ -299,8 +310,6 @@ CONST
    names will vary with the particular  installation of X-Plane, so plugins 
    should not expect a feature to be guaranteed present.                       
 }
-
-
 
 
    {

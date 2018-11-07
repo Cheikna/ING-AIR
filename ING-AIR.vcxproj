@@ -14,7 +14,6 @@
     <SccProjectName />
     <SccLocalPath />
     <ProjectGuid>{695129AD-4F97-4350-A653-67E9C642FB8F}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectName>ING-AIR</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
