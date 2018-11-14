@@ -62,6 +62,12 @@ PLUGIN_API int XPluginStart(
 //Cette méthode est appelée plusieurs fois automatiquement
 void	XPluginUpdate(XPLMWindowID in_window_id, void * in_refcon)
 {
+	double latitude = XPLMGetDatad(XPLMFindDataRef("latitude"));
+	double longitude = XPLMGetDatad(XPLMFindDataRef("longitude"));
+	std::string convertedLatitude = std::to_string(latitude);
+	std::string convertedLongitude = std::to_string(longitude);
+	//writeInLogFile()
+	XPLMDebugString("Position : " + convertedLatitude + " - " + convertedLongitude);
 	
 	//writeInLogFile();
 	XPLMDebugString("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg\n");
