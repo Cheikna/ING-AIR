@@ -1,8 +1,11 @@
 #include "XPLMDisplay.h"
 #include "XPLMGraphics.h"
 #include "XPLMUtilities.h"
+#include "XPLMDataAccess.h"
+#include "XPLMUtilities.h"
 #include <string.h>
 #include <string>
+#include <sstream>
 #if IBM
 	#include <windows.h>
 #endif
@@ -38,7 +41,7 @@ XPLMCursorStatus	dummy_cursor_status_handler(XPLMWindowID in_window_id, int x, i
 int					dummy_wheel_handler(XPLMWindowID in_window_id, int x, int y, int wheel, int clicks, void * in_refcon) { return 0; }
 void				dummy_key_handler(XPLMWindowID in_window_id, char key, XPLMKeyFlags flags, char virtual_key, void * in_refcon, int losing_focus) { }
 void				setWindowParams();
-void writeInFile();
+void writeAircraftPositionsInFile(std::string fileName);
 
 
 //Cette méthode est appelée une seule fois, lors du lancement de X-Plane
@@ -57,20 +60,25 @@ PLUGIN_API int XPluginStart(
 
 	g_window = XPLMCreateWindowEx(&params);
 	return g_window != NULL;
+
 }
 
 //Cette méthode est appelée plusieurs fois automatiquement
 void	XPluginUpdate(XPLMWindowID in_window_id, void * in_refcon)
 {
-	double latitude = XPLMGetDatad(XPLMFindDataRef("latitude"));
-	double longitude = XPLMGetDatad(XPLMFindDataRef("longitude"));
+	double latitude = XPLMGetDatad(XPLMFindDataRef("sim/flightmodel/position/latitude"));
+	double longitude = XPLMGetDatad(XPLMFindDataRef("sim/flightmodel/position/longitude"));
 	std::string convertedLatitude = std::to_string(latitude);
 	std::string convertedLongitude = std::to_string(longitude);
 	//writeInLogFile()
-	XPLMDebugString("Position : " + convertedLatitude + " - " + convertedLongitude);
+	XPLMDebugString("========================================= TEST ========================================\n");
+	std::stringstream positionSStream;
+	positionSStream << "Position lue  ----- Latitude : " << convertedLatitude << " Longitude : " << convertedLongitude << "\n";
+	std::string position = positionSStream.str();
+	XPLMDebugString(position.c_str());
+	writeAircraftPositionsInFile("AircraftPositions.txt");
 	
 	//writeInLogFile();
-	XPLMDebugString("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg\n");
 }
 
 
@@ -95,32 +103,21 @@ void writeInLogFile()
 
 }
 
-void writeInFile()
+void writeAircraftPositionsInFile(std::string fileName)
 {
-
-	std::ofstream("TestToDelete.txt");
+	std::ofstream("AircraftsPosition.txt");
 	std::ofstream outfile;
-	outfile << "Ceci est un message test afin de vérifier si on peut créer et écrire dans un fichier texte à partir d'un plugin sous X-Plane11.\nCe fichier peut être supprimé.\nING-AIR :-)";
-	outfile.close();
+	double latitude = XPLMGetDatad(XPLMFindDataRef("sim/flightmodel/position/latitude"));
+	double longitude = XPLMGetDatad(XPLMFindDataRef("sim/flightmodel/position/longitude"));
+	std::string convertedLatitude = std::to_string(latitude);
+	std::string convertedLongitude = std::to_string(longitude);
+	XPLMDebugString("========================================= TEST ========================================\n");
+	std::stringstream positionSStream;
+	positionSStream << "Position lue  ----- Latitude : " << convertedLatitude << " Longitude : " << convertedLongitude << "\n";
+	std::string position = positionSStream.str();
+	outfile << position;
+	//outfile.close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
