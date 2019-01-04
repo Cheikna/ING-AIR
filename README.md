@@ -30,3 +30,20 @@ Copier le dossier ING-AIR dans le dossier plugins du jeu X-Plane 11 (pour trouve
 
 Le plugin est prêt à être utilisé.
 
+```xml
+<build>
+   <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <configuration>
+        <archive>
+            <manifest>
+                <mainClass>com.inventory.gui.InventoryApp</mainClass>
+            </manifest>
+        </archive>
+        <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+    </configuration>
+</plugin>
+</build>
+```
