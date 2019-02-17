@@ -3,7 +3,6 @@
 
 Aircraft::Aircraft()
 {	
-	// Exemple of database path : "D:\\GitHub\\ING-AIR\\GeometryDatabase.db"
 	result = sqlite3_open(databasePath.c_str(), &database);
 
 	if (result)
@@ -59,9 +58,12 @@ void Aircraft::writeInLogFile()
 	XPLMDebugString("\n\n");
 }
 
-void Aircraft::insertPositionsIntoDatabase()
+void Aircraft::savePositionsIntoDatabase()
 {
-	std::string sql = "insert into " + tableName + "(longitude, latitude) values (" + getLatitudeAsString() + "," + getLongitudeAsString() + ");";
+	std::string valuesToRegister = getLatitudeAsString() + "," + getLongitudeAsString() ;
+
+
+	std::string sql = "insert into " + tableName + fieldsForInsert + " values (" + valuesToRegister + ");";
 
 	char* messaggeError;
 	int result = sqlite3_exec(database, sql.c_str(), NULL, 0, &messaggeError);
@@ -90,9 +92,9 @@ int display(void * data, int argc, char ** argv, char ** azColName)
 	return 0;
 }
 
-void Aircraft::selectPositionsFromDatabase()
+void Aircraft::retrievePositionsFromDatabase()
 {
-	std::string sql = "select * from " + tableName + ";";
+	std::string sql = "select " + fieldsForInsert + " from " + tableName + ";";
 	const char* data = "Callback function called";
 	char* messaggeError;
 	int result = sqlite3_exec(database, sql.c_str(), display, (void*)data, &messaggeError);

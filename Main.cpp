@@ -1,9 +1,15 @@
 #include "Model\Entity\Aircraft.h"
 
-
+/*********************************************
+*************** Attributes *******************
+*********************************************/
 int left, bottom, right, top;
 Aircraft aircraft;
 
+
+/********************************************
+***************** Methods *******************
+*********************************************/
 // An opaque handle to the window we will create
 static XPLMWindowID	g_window;
 
@@ -64,8 +70,8 @@ PLUGIN_API void XPluginDisable(void) { }
 PLUGIN_API int  XPluginEnable(void) { return 1; }
 PLUGIN_API void XPluginReceiveMessage(XPLMPluginID inFrom, int inMsg, void * inParam) { }
 
-void	update(XPLMWindowID in_window_id, void * in_refcon)
+void update(XPLMWindowID in_window_id, void * in_refcon)
 {
-	aircraft.insertPositionsIntoDatabase();
+	aircraft.savePositionsIntoDatabase();
 }
 
