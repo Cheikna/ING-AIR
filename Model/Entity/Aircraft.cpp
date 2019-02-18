@@ -52,7 +52,7 @@ std::string Aircraft::getLongitudeAsString()
 void Aircraft::writeInLogFile()
 {
 	XPLMDebugString("\n\n\n");
-	XPLMDebugString("========================================= Positions - Cheikna ========================================\n");
+	XPLMDebugString("========================================= Positions ========================================\n");
 	std::string position = "Latitude : " + Aircraft::getLatitudeAsString() + " ---------------- Longitude : " + Aircraft::getLongitudeAsString();
 	XPLMDebugString(position.c_str());
 	XPLMDebugString("\n\n");
@@ -60,6 +60,8 @@ void Aircraft::writeInLogFile()
 
 void Aircraft::savePositionsIntoDatabase()
 {
+
+	std::string fieldsForInsert = "(longitude, latitude)";
 	std::string valuesToRegister = getLatitudeAsString() + "," + getLongitudeAsString() ;
 
 
@@ -94,7 +96,8 @@ int display(void * data, int argc, char ** argv, char ** azColName)
 
 void Aircraft::retrievePositionsFromDatabase()
 {
-	std::string sql = "select " + fieldsForInsert + " from " + tableName + ";";
+	std::string fieldsForSelect = "*";
+	std::string sql = "select " + fieldsForSelect + " from " + tableName + ";";
 	const char* data = "Callback function called";
 	char* messaggeError;
 	int result = sqlite3_exec(database, sql.c_str(), display, (void*)data, &messaggeError);

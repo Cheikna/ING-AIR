@@ -10,8 +10,6 @@ private :
 	// Exemple de chemin pour un fchier de base de données : "D:\\GitHub\\ING-AIR\\GeometryDatabase.db"
 	const std::string databasePath = "D:\\GitHub\\ING-AIR\\GeometryDatabase.db";
 	const std::string tableName = "COORDINATES_2";
-	const std::string fieldsForInsert = "(longitude, latitude)";
-	const std::string fieldsFoSelect = "*";
 	sqlite3 *database;
 	int result;
 
