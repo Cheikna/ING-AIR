@@ -1,5 +1,14 @@
-#include "../DatabaseFiles/sqlite3.h"
 #include "../../SDK/XPlaneSDKIncludes.h"
+#ifdef SPATIALITE_AMALGAMATION
+#include <spatialite/sqlite3.h>
+#else
+#include "../DatabaseFiles/sqlite3.h"
+#endif
+
+
+#ifndef SPATIALITE_EXTENSION
+#include <spatialite.h>
+#endif
 /**
 *	Ce fichier AircraftsPositions.h contient tous les prototypes de tous les méthodes qui vont être appelées par la suite.
 *	Les différentes méthodes ci-dessous seront implémentées dans le fichier AircraftPositions.cpp
