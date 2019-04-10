@@ -3,16 +3,7 @@
 
 Aircraft::Aircraft()
 {	
-	result = sqlite3_open(databasePath.c_str(), &database);
-
-	if (result)
-	{
-		XPLMDebugString("Error when opening the database :\n");
-	}
-	else
-	{
-		XPLMDebugString("The database was opened Successfully!\n");
-	}
+	
 
 }
 
@@ -58,62 +49,26 @@ void Aircraft::writeInLogFile()
 	XPLMDebugString("\n\n");
 }
 
-void Aircraft::savePositionsIntoDatabase()
+void Aircraft::openAircraftPositionsFile()
 {
-
-	std::string fieldsForInsert = "(longitude, latitude)";
-	std::string valuesToRegister = getLatitudeAsString() + "," + getLongitudeAsString() ;
-
-
-	std::string sql = "insert into " + tableName + fieldsForInsert + " values (" + valuesToRegister + ");";
-
-	char* messaggeError;
-	int result = sqlite3_exec(database, sql.c_str(), NULL, 0, &messaggeError);
-
-	if (result != SQLITE_OK)
-	{
-		XPLMDebugString("Error when executing the request\n");
-	}
-	else
-	{
-		XPLMDebugString("Request successfully executed !\n");
-	}
+	aircraftPositionsFile.open(aircraftPositionsFileName);
+	XPLMDebugString("Aircraft positions file opened");
 }
 
-
-int display(void * data, int argc, char ** argv, char ** azColName)
+void Aircraft::writeInPositionsFile()
 {
-	int i;
-	fprintf(stderr, "%s: ", (const char*)data);
-
-	for (i = 0; i<argc; i++) {
-		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-	}
-
-	printf("\n");
-	return 0;
+	//Dans le fichier on écrit une position par ligne 
+	// latitude and longitude
+	aircraftPositionsFile << getLatitudeAsString() << " and " << getLongitudeAsString() << std::endl;
 }
 
-void Aircraft::retrievePositionsFromDatabase()
+void Aircraft::closeAircraftPositionsFile()
 {
-	std::string fieldsForSelect = "*";
-	std::string sql = "select " + fieldsForSelect + " from " + tableName + ";";
-	const char* data = "Callback function called";
-	char* messaggeError;
-	int result = sqlite3_exec(database, sql.c_str(), display, (void*)data, &messaggeError);
-
-	if (result != SQLITE_OK)
-	{
-		XPLMDebugString("Error when executing the request\n");
-	}
-	else
-	{
-		XPLMDebugString("Request successfully executed !\n");
-	}
+	aircraftPositionsFile.close();
+	XPLMDebugString("Aircraft positions file closed");
 }
 
-void Aircraft::closeDatabase()
+double Aircraft::getRandomNumber(int maxExclusive)
 {
-	sqlite3_close(database);
-	XPLMDebugString("The database has been closed\n");
+	return rand() % maxExclusive;
 }

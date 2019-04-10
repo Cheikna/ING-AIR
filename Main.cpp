@@ -56,12 +56,13 @@ PLUGIN_API int XPluginStart(
 	params.top = params.bottom + 200;
 
 	g_window = XPLMCreateWindowEx(&params);
+	aircraft.openAircraftPositionsFile();
 	return g_window != NULL;
 }
 
 PLUGIN_API void	XPluginStop(void)
 {
-	aircraft.closeDatabase();
+	aircraft.closeAircraftPositionsFile();
 	XPLMDestroyWindow(g_window);
 	g_window = NULL;
 }
@@ -72,6 +73,7 @@ PLUGIN_API void XPluginReceiveMessage(XPLMPluginID inFrom, int inMsg, void * inP
 
 void update(XPLMWindowID in_window_id, void * in_refcon)
 {
-	aircraft.savePositionsIntoDatabase();
+	aircraft.writeInLogFile();
+	aircraft.writeInPositionsFile();
 }
 

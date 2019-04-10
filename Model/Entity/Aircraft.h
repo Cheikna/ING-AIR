@@ -1,14 +1,7 @@
 #include "../../SDK/XPlaneSDKIncludes.h"
-#ifdef SPATIALITE_AMALGAMATION
-#include <spatialite/sqlite3.h>
-#else
-#include "../DatabaseFiles/sqlite3.h"
-#endif
-
-
-#ifndef SPATIALITE_EXTENSION
-#include <spatialite.h>
-#endif
+#include <iostream>
+#include <stdlib.h>
+#include <fstream>
 /**
 *	Ce fichier AircraftsPositions.h contient tous les prototypes de tous les méthodes qui vont être appelées par la suite.
 *	Les différentes méthodes ci-dessous seront implémentées dans le fichier AircraftPositions.cpp
@@ -16,11 +9,12 @@
 class Aircraft {
 
 private : 
-	// Exemple de chemin pour un fchier de base de données : "D:\\GitHub\\ING-AIR\\GeometryDatabase.db"
-	const std::string databasePath = "D:\\GitHub\\ING-AIR\\GeometryDatabase.db";
-	const std::string tableName = "COORDINATES_2";
-	sqlite3 *database;
-	int result;
+	// Fichier où les positions de l'avion vont être écrites
+	const std::string	aircraftPositionsFileName = "aircraft_positions.txt";
+	std::ofstream		aircraftPositionsFile;
+
+	std::string		getLatitudeAsString();
+	std::string		getLongitudeAsString();
 
 public :
 	// Constructeur
@@ -30,11 +24,11 @@ public :
 	double			getLatitude();
 	double			getLongitude();
 
-	std::string		getLatitudeAsString();
-	std::string		getLongitudeAsString();
-
 	void			writeInLogFile();
-	void			savePositionsIntoDatabase();
-	void			retrievePositionsFromDatabase();
-	void			closeDatabase();
+	void			openAircraftPositionsFile();
+	void			writeInPositionsFile();
+	void			closeAircraftPositionsFile();
+
+	// Retourne un nombre entre 0 et maxExclusive (exclus)
+	double			getRandomNumber(int maxExclusive);
 };
