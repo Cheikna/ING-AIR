@@ -18,6 +18,14 @@ GitHubDesktop devrait s'ouvrir en vous demandant de choisir l'emplacement local 
 
 Enfin, ouvrir le fichier .sln pour commencer à travailler.
 
+# Organisation du projet
+## Le projet se découpe en deux grandes parties
+### 1ère partie : le dossier **positions-inserter**
+Ce dossier dont les scripts ont principalement été écrits en python permet l'insertion de données dans une BDD SQLite
+
+### 2ème partie : le dossier **positions-retriver***
+Ce dossier dont les scripts ont principalement été écrits en C++ permet la récupération de la position de l'avion dans le jeu X-Plane 1 via un plugin
+
 # Génération & Installation d'un plugin
 Après avoir ouvert le projet, fait un clique-droit sur la solution, puis cliquer sur 'Générer la solution'
 ![](images/vs_compil.png)
@@ -29,4 +37,7 @@ Une fois la solution compilée, se rendre jusqu'au dossier ING-AIR (pas besoin d
 Copier le dossier ING-AIR dans le dossier plugins du jeu X-Plane 11 (pour trouver le dossier plugins suivre le chemin: X-Plane 11\Resources\plugins)
 
 Le plugin est prêt à être utilisé.
+
+# Utilisation du script python pour l'insertion de données dans la base de données SQLite
+La version de python qui a été utilisée est la version 2.7.15 qui sera en archive dans le dossier
 
