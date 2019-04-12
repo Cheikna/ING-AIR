@@ -23,7 +23,7 @@ Enfin, ouvrir le fichier .sln pour commencer à travailler.
 ### 1ère partie : le dossier **positions-inserter**
 Ce dossier dont les scripts ont principalement été écrits en python permet l'insertion de données dans une BDD SQLite
 
-### 2ème partie : le dossier **positions-retriver***
+### 2ème partie : le dossier **positions-retriver**
 Ce dossier dont les scripts ont principalement été écrits en C++ permet la récupération de la position de l'avion dans le jeu X-Plane 1 via un plugin
 
 # Génération & Installation d'un plugin
