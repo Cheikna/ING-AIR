@@ -10,7 +10,7 @@ class Aircraft {
 
 private : 
 	// Fichier où les positions de l'avion vont être écrites
-	const std::string	aircraftPositionsFileName = "aircraft_positions.txt";
+	const std::string	aircraftPositionsFileName = "aircraft-positions.txt";
 	std::ofstream		aircraftPositionsFile;
 
 	std::string		getLatitudeAsString();
