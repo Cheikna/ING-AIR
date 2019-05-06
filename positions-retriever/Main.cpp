@@ -20,6 +20,7 @@ XPLMCursorStatus	dummy_cursor_status_handler(XPLMWindowID in_window_id, int x, i
 int					dummy_wheel_handler(XPLMWindowID in_window_id, int x, int y, int wheel, int clicks, void * in_refcon) { return 0; }
 void				dummy_key_handler(XPLMWindowID in_window_id, char key, XPLMKeyFlags flags, char virtual_key, void * in_refcon, int losing_focus) { }
 
+
 PLUGIN_API int XPluginStart(
 	char *		outName,
 	char *		outSig,
@@ -76,4 +77,5 @@ void update(XPLMWindowID in_window_id, void * in_refcon)
 	aircraft.writeInLogFile();
 	aircraft.writeInPositionsFile();
 }
+
 

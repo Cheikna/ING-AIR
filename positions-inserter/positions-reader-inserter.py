@@ -18,6 +18,7 @@ cursor = connection.cursor()
 cursor.executescript(""" 
 		DROP TABLE IF EXISTS  """ + tableName + """ ;
 		CREATE TABLE IF NOT EXISTS """ + tableName + """ (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, measured_value DOUBLE NOT NULL);
+		SELECT InitSpatialMetaData();
 		SELECT AddGeometryColumn('""" + tableName + """', 'the_geom', 4326, 'POINT', 'XY');
 	""")
 connection.commit()
@@ -28,7 +29,6 @@ f2 = open("database-log.txt", "a")
 previousLine = ''
 count = 1
 while(True):
-	print("Loop")
 	currentLine = f.readline()
 	print(currentLine)
 	if(currentLine == previousLine):
