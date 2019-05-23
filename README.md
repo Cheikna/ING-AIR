@@ -21,17 +21,17 @@ Enfin, ouvrir le fichier .sln pour commencer à travailler.
 # Organisation du projet
 ## Le projet se découpe en deux grandes parties
 
-### 1ère partie : le dossier **positions-retriver**
+### 1ère partie : le dossier **_positions-retriver_**
 Ce dossier dont les scripts ont principalement été écrits en C++ permet la récupération de la position de l'avion dans le jeu X-Plane 1 via un plugin. Ce dernier va enregister les positions dans un fichier texte. Le nom du fichier texte est donné dans la classe Aircraft.h
 
-### 2ème partie : le dossier **positions-inserter**
-Ce dossier dont les scripts ont principalement été écrits en python permet l'insertion de données dans une BDD SQLite. En effet, le but de la partie précédente était d'écrire les positions de l'avion dans un fichier texte. Le script __positions-reader-inserter.py__ va se charger de lire les positions qui ont été enregistrées puis de les sauvegarder en base de données.
+### 2ème partie : le dossier **_positions-inserter_**
+Ce dossier dont les scripts ont principalement été écrits en python permet l'insertion de données dans une BDD SQLite. En effet, le but de la partie précédente était d'écrire les positions de l'avion dans un fichier texte. Le script _positions-reader-inserter.py_ va se charger de lire les positions qui ont été enregistrées puis de les sauvegarder en base de données.
 
 # Mise en place du système de récupération des positions de l'avion : Génération & Installation du plugin
 Après avoir ouvert le projet, fait un clique-droit sur la solution, puis cliquer sur 'Générer la solution'
 ![](images/vs_compil.png)
 
-Une fois la solution compilée, se rendre jusqu'au dossier ING-AIR (pas besoin d'aller jusqu'au fichier .xpl), en regarder le chemin indiqué dans la console.
+Une fois la solution compilée, se rendre jusqu'au dossier ING-AIR (pas besoin d'aller jusqu'au fichier .xpl), en regardant le chemin indiqué dans la console.
 
 ![](images/vs_compil_end.png)
 
@@ -40,4 +40,10 @@ Copier le dossier ING-AIR dans le dossier plugins du jeu X-Plane 11 (pour trouve
 Le plugin est prêt à être utilisé.
 
 # Mise en place du système d'enregistrement des positions dans une base de données SQLite
+## Installation et configuration de Python
 La version de python qui a été utilisée est la version 2.7.15 qui sera en archive dans le dossier
+
+## Installation du module sqlite
+
+
+## Lancement de l'enregistrement des positions en base
