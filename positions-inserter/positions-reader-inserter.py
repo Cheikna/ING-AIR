@@ -29,37 +29,34 @@ connection.commit()
 
 print("The table " + tableName + " has been created.")
 print("Processing positions...")
+print("If you quit this window, the new positions will not be saved")
 #Lecture des positions et insertion dans la base de donnee
 f = open(positionsFileName, "r")
 previousLine = ''
 count = 1
 while(True):
+	# Lecture de la ligne suivante
 	currentLine = f.readline()
-	# Eviter d'inserer en base la meme donnee plusieurs fois de suite
-	if(currentLine == previousLine):
-		time.sleep(3)
-	else :
-		# Le regex de split est defini dans la classe Aircraft.cpp du projet positions-retriever fait en C++
-		positions = currentLine.split("and")
-		latitude = positions[0]
-		longitude = positions[1]
-		point = longitude + " " + latitude
-		if(myId == 0):
-			# Insertion de la premiere position recuperee
-			cursor.executescript("""
-				INSERT INTO """ + tableName + """ VALUES (NULL, """ + str(count) + """, GeomFromText('POINT(""" + point + """)', 4326)); 
-				""")
-			# Recuperation de l'id correspondant a cette derniere ligne creee
-			cursor.execute(""" SELECT id FROM """ + tableName + """ ORDER BY id DESC LIMIT 1;""")
-			myId = cursor.fetchone()[0]
-			print("A new line has been created with the id : " + str(myId))
+	# Le regex de split est defini dans la classe Aircraft.cpp du projet positions-retriever fait en C++
+	positions = currentLine.split("and")
+	latitude = positions[0]
+	longitude = positions[1]
+	point = longitude + " " + latitude
+	if(myId == 0):
+		# Insertion de la premiere position recuperee
+		cursor.executescript("""
+			INSERT INTO """ + tableName + """ VALUES (NULL, """ + str(count) + """, GeomFromText('POINT(""" + point + """)', 4326)); 
+			""")
+		# Recuperation de l'id correspondant a cette derniere ligne creee
+		cursor.execute(""" SELECT id FROM """ + tableName + """ ORDER BY id DESC LIMIT 1;""")
+		myId = cursor.fetchone()[0]
+		print("A new line has been created with the id : " + str(myId))
 
-		else :			
-			# Mise a jour des points ainsi que du count
-			query = 'UPDATE  '  + tableName + '  SET count =  ' + str(count) +' , the_geom = GeomFromText(\'POINT(' + point + ')\', 4326) WHERE id =  '+ str(myId) +';'
-			print(query)
-			cursor.execute(query)
-		connection.commit()
+	else :			
+		# Mise a jour des points ainsi que du count
+		query = 'UPDATE  '  + tableName + '  SET count =  ' + str(count) +' , the_geom = GeomFromText(\'POINT(' + point + ')\', 4326) WHERE id =  '+ str(myId) +';'
+		cursor.execute(query)
+	connection.commit()
 	# Augmente afin de connaitre le nombre de tour de boucle qui a ete fait
 	count += 1
 f.close()
