@@ -78,6 +78,7 @@ _Ici le dossier Python a été renommé en Python27_
 ```
 C:\Program Files (x86)\mod_spatialite
 ```
+![](images/variable2.png)
 - Enfin cliquer sur les boutons _OK_ de toutes les fenêtres afin de valider toutes les modifications
 
 # Exécution du plugin et visualisation sur QGIS (sur Windows)
