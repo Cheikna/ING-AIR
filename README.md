@@ -110,7 +110,7 @@ D:\Games\X-Plane>python positions-reader-inserter.py
 4.Une nouvelle fenêtre s'ouvre, puis faites un clique-droit sur 'Spatialite' puis 'Nouvelle connexion...'
 ![](images/qgis2.png)
 
-5.Une autre fenêtre s'ouvre où vous devrez choisir le fichier _'postion.sqlite'_ qui a été créé dans le dossier X-Plane lors de l'exécution du script Python _positions-reader-inserter.py_ et cliquez sur _Ouvrir_
+5.Une autre fenêtre s'ouvre où vous devrez choisir le fichier _'position.sqlite'_ qui a été créé dans le dossier X-Plane lors de l'exécution du script Python _positions-reader-inserter.py_ et cliquez sur _Ouvrir_
 ![](images/qgis3.png)
 
 6.La couche devrait être créée automatiquement dans la partie gauche (_ici ING_AIR_) et dans la rubrique **SpatiaLite** les informations sur la colonnes qui est de type geometry devrait s'afficher.
