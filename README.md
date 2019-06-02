@@ -19,7 +19,8 @@ GitHubDesktop devrait s'ouvrir en vous demandant de choisir l'emplacement local 
 Enfin, ouvrir le fichier .sln pour commencer à travailler.
 
 # Utilisation du projet
-Si vous ne comptez pas modifier le projet, mais juste tester directement le plugin. Il vous suffit de télécharger le projet, pas besoinn de le cloner
+- Si vous ne comptez pas modifier le projet, mais juste tester directement le plugin. Il vous suffit de télécharger le projet, pas besoin de le cloner.
+- Placez le dossier 'ING_AIR' (se situant dans le dossier 'bin') dans le dossier plugins de X-Plane (X-Plane 11\Resources\plugins)
 
 # Organisation du projet
 ## Le projet se découpe en deux grandes parties
@@ -83,8 +84,8 @@ C:\Program Files (x86)\mod_spatialite
 
 # Exécution du plugin et visualisation sur QGIS (sur Windows)
 ## Création de la base de données
-1.Dans le dossier _positions-inserter_ du dossier téléchargé au début, copiez les fichier _position.sqlite_ et _positions-reader-inserter.py_ et collez-les à la racine du dossier X-Plane
-![](images/inserter_files_moving.png)
+1.Dans le dossier _positions-inserter_ du dossier téléchargé au début, copiez le fichier _positions-reader-inserter.py_ et collez-le à la racine du dossier X-Plane
+![](images/inserter_file_moving.png)
 
 2. Ouvrez l'invite de commande et rendez-vous à la racine du dossier X-Plane ou alors dans le dossier X-Plane, faites _Shift + Clic Droit_ et _Ouvrir la fenêtre PowerShell ici_
 
@@ -93,13 +94,36 @@ C:\Program Files (x86)\mod_spatialite
 D:\Games\X-Plane>python positions-reader-inserter.py
 ```
 
-4. La table qui va permettre la sauvegarde des données sera alors en cours de création.
+4. Le fichier de base de données sqlite et la table, qui vont permettre la sauvegarde des données, seront alors en cours de création.
 
-5. Si le message ci-dessous s'affiche, alors ne vous inquiétez pas, celà veut juste dire que la table avec les éléments qui seront nécessaires a été créée.
+5. Si le message ci-dessous s'affiche, alors ne vous inquiétez pas, celà veut juste dire que la table avec les éléments qui seront nécessaires a déjà été créée.
 ![](images/run_python_script.png)
 
 ## Liaison entre la base de données et QGIS
-http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
+1.Installez QGIS, pour la suite nous utiliserons la version 3.2.3 de QGIS
+
+2.Lancez QGIS
+
+3.Dans la barre de Menu en haut cliquez sur 'Base de donnée' puis 'DB Manager...'
+![](images/qgis1.png)
+
+4.Une nouvelle fenêtre s'ouvre, puis faites un clique-droit sur 'Spatialite' puis 'Nouvelle connexion...'
+![](images/qgis2.png)
+
+5.Une autre fenêtre s'ouvre où vous devrez choisir le fichier _'postion.sqlite'_ qui a été créé dans le dossier X-Plane lors de l'exécution du script Python _positions-reader-inserter.py_ et cliquez sur _Ouvrir_
+![](images/qgis3.png)
+
+6.La couche devrait être créée automatiquement dans la partie gauche (_ici ING_AIR_) et dans la rubrique **SpatiaLite** les informations sur la colonnes qui est de type geometry devrait s'afficher.
+![](images/qgis4.png)
+
+7.Pour ajouter une carte en fond, cliquez sur 'Internet', 'QuickMap Services' puis 'Panneau Search QMS'.
+![](images/qgis5.png)
+
+8.Un nouveau panneau apparait à droite et cherchez une map. Nous avons choisi 'Google Satellite Hybrid'.
+![](images/qgis6.png)
+
+9.Ensuite, cliquez sur le bouton 'Add' et la carte devrait s'afficher sur l'écran.
+![](images/qgis7.png)
 
 ## Amusez-vous
 Enfin lancez le jeu X-Plane est observez vos déplacement sur la carte de QGIS.

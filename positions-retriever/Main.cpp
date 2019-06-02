@@ -30,6 +30,9 @@ PLUGIN_API int XPluginStart(
 	strcpy(outSig, "xpsdk.examples.ing_air");
 	strcpy(outDesc, "Le plugin ING-AIR");
 
+	// Les éléments ci-dessous proviennent d'un plugin récupéré
+	// Il semblerait que la suppression des lignes ci-dessous empêche le bon fonctionnement du plugin 
+	// qui récupère les données dans le jeu
 	XPLMCreateWindow_t params;
 	params.structSize = sizeof(params);
 	params.visible = 1;
@@ -57,6 +60,7 @@ PLUGIN_API int XPluginStart(
 	params.top = params.bottom + 200;
 
 	g_window = XPLMCreateWindowEx(&params);
+	// Ouverture du fichier afin d'y écrire les positions de l'avion
 	aircraft.openAircraftPositionsFile();
 	return g_window != NULL;
 }
@@ -72,8 +76,12 @@ PLUGIN_API void XPluginDisable(void) { }
 PLUGIN_API int  XPluginEnable(void) { return 1; }
 PLUGIN_API void XPluginReceiveMessage(XPLMPluginID inFrom, int inMsg, void * inParam) { }
 
+/**
+* La méthode update est appelée régulièrement (toutes les milliseconds, il semblerait)
+*/
 void update(XPLMWindowID in_window_id, void * in_refcon)
 {
-	aircraft.writeInLogFile();
+	//aircraft.writeInLogFile();
+	// Ecriture des positions successives de l'avion dans le fichier ouvert dans la méthode XPluginStart
 	aircraft.writeInPositionsFile();
 }

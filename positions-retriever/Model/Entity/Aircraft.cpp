@@ -1,20 +1,18 @@
 #include "Aircraft.h"
 
 
-Aircraft::Aircraft()
-{	
-	
-
-}
+Aircraft::Aircraft(){}
 
 
 double Aircraft::getLatitude()
 {
+	// Récupération de la donnée fournie par les dataRefs de X-PLANE
 	return XPLMGetDatad(XPLMFindDataRef("sim/flightmodel/position/latitude"));
 }
 
 double Aircraft::getLongitude()
 {
+	// Récupération de la donnée fournie par les dataRefs de X-PLANE
 	return XPLMGetDatad(XPLMFindDataRef("sim/flightmodel/position/longitude"));
 }
 
@@ -44,7 +42,7 @@ void Aircraft::writeInLogFile()
 {
 	XPLMDebugString("\n\n\n");
 	XPLMDebugString("========================================= Positions ========================================\n");
-	std::string position = "Latitude : " + Aircraft::getLatitudeAsString() + " ---------------- Longitude : " + Aircraft::getLongitudeAsString();
+	std::string position = "Longitude : " + Aircraft::getLongitudeAsString() + " ---------------- Latitude : " + Aircraft::getLatitudeAsString();
 	XPLMDebugString(position.c_str());
 	XPLMDebugString("\n\n");
 }
@@ -59,7 +57,7 @@ void Aircraft::writeInPositionsFile()
 {
 	//Dans le fichier on écrit une position par ligne 
 	// latitude and longitude
-	aircraftPositionsFile << getLatitudeAsString() << "and" << getLongitudeAsString() << std::endl;
+	aircraftPositionsFile << getLongitudeAsString() << "and" << getLatitudeAsString() << std::endl;
 }
 
 void Aircraft::closeAircraftPositionsFile()

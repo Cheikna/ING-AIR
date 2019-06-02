@@ -1,8 +1,8 @@
 #include "../../SDK/XPlaneSDKIncludes.h"
-#include <iostream>
 #include <stdlib.h>
 #include <fstream>
-#include <thread>
+#include <iostream>
+#include <string.h>
 /**
 *	Ce fichier AircraftsPositions.h contient tous les prototypes de tous les méthodes qui vont être appelées par la suite.
 *	Les différentes méthodes ci-dessous seront implémentées dans le fichier AircraftPositions.cpp
