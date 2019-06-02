@@ -125,5 +125,11 @@ D:\Games\X-Plane>python positions-reader-inserter.py
 9.Ensuite, cliquez sur le bouton 'Add' et la carte devrait s'afficher sur l'écran.
 ![](images/qgis7.png)
 
+10.Enfin afin de lire régulièrement les positions, faire un clique-droit sur ING-AIR dans le panneau de gauche, puis cliquez sur 'Propriétés'
+![](images/qgis8.png)
+
+11.Sur la nouvelle fenêtre qui s'affiche, cliquez sur 'Rendu' (le bouton avec une icône de pinceau), puis cochez la case 'Rafraîchir la couche toutes les (secondes)', entrez un intervalles. Enfin cliquez sur le bouton 'OK'
+![](images/qgis9.png)
+
 ## Amusez-vous
 Enfin lancez le jeu X-Plane est observez vos déplacement sur la carte de QGIS.
