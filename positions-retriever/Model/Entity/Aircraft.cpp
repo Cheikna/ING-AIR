@@ -59,7 +59,7 @@ void Aircraft::writeInPositionsFile()
 {
 	//Dans le fichier on écrit une position par ligne 
 	// latitude and longitude
-	aircraftPositionsFile << getLatitudeAsString() << "and" << getLongitudeAsString() << std::endl;
+	aircraftPositionsFile << getLongitudeAsString() << "and" << getLatitudeAsString() << std::endl;
 }
 
 void Aircraft::closeAircraftPositionsFile()
