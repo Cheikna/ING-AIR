@@ -50,7 +50,7 @@ void Aircraft::writeInLogFile()
 void Aircraft::openAircraftPositionsFile()
 {
 	aircraftPositionsFile.open(aircraftPositionsFileName);
-	XPLMDebugString("Aircraft positions file opened");
+	XPLMDebugString("Aircraft positions file opened\n");
 }
 
 void Aircraft::writeInPositionsFile()
@@ -63,7 +63,7 @@ void Aircraft::writeInPositionsFile()
 void Aircraft::closeAircraftPositionsFile()
 {
 	aircraftPositionsFile.close();
-	XPLMDebugString("Aircraft positions file closed");
+	XPLMDebugString("Aircraft positions file closed\n");
 }
 
 double Aircraft::getRandomNumber(int maxExclusive)

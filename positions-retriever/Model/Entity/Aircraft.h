@@ -12,7 +12,6 @@ class Aircraft {
 private : 
 	// Fichier où les positions de l'avion vont être écrites
 	const std::string	aircraftPositionsFileName = "aircraft-positions.txt";
-	const std::string	positionsInserterFileName = "positions-reader-inserter.py";
 	std::ofstream		aircraftPositionsFile;
 
 	std::string		getLatitudeAsString();
