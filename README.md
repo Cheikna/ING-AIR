@@ -100,6 +100,7 @@ D:\Games\X-Plane>python positions-reader-inserter.py
 ```
 
 4. Le fichier de base de données sqlite et la table, qui vont permettre la sauvegarde des données, seront alors en cours de création.
+** Cette opération peut prendre plusieurs minutes (environ 7 minutes)
 
 5. Si le message ci-dessous s'affiche, alors ne vous inquiétez pas, celà veut juste dire que la table avec les éléments qui seront nécessaires a déjà été créée.
 ![](images/run_python_script.png)
@@ -130,11 +131,11 @@ D:\Games\X-Plane>python positions-reader-inserter.py
 9.Ensuite, cliquez sur le bouton 'Add' et la carte devrait s'afficher sur l'écran.
 ![](images/qgis7.png)
 
-10.Enfin afin de lire régulièrement les positions, faire un clique-droit sur ING-AIR dans le panneau de gauche, puis cliquez sur 'Propriétés'
+10.Enfin afin de lire régulièrement les positions, faites un clique-droit sur ING-AIR dans le panneau de gauche, puis cliquez sur 'Propriétés'
 ![](images/qgis8.png)
 
-11.Sur la nouvelle fenêtre qui s'affiche, cliquez sur 'Rendu' (le bouton avec une icône de pinceau), puis cochez la case 'Rafraîchir la couche toutes les (secondes)', entrez un intervalles. Enfin cliquez sur le bouton 'OK'
+11.Sur la nouvelle fenêtre qui s'affiche, cliquez sur 'Rendu' (le bouton avec une icône de pinceau), puis cochez la case 'Rafraîchir la couche toutes les (secondes)', entrez un intervalle. Enfin cliquez sur le bouton 'OK'
 ![](images/qgis9.png)
 
 ## Amusez-vous
-Enfin lancez le jeu X-Plane est observez vos déplacement sur la carte de QGIS.
+Enfin lancez le jeu X-Plane est observez vos déplacements sur la carte de QGIS.
