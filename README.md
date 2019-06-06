@@ -1,5 +1,9 @@
 # ING-AIR ✈️
 
+# Prérequis
+## Visual Studio 2017
+## Python 2.7.15
+
 # Mise en place du projet
 Après avoir créer un compte sur gitHub, installer gitHub Desktop.
 Une fois le lien d'invitation pour le project accepté, cloner le projet.
