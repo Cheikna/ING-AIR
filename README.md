@@ -1,8 +1,9 @@
 # ING-AIR ✈️
 
 # Prérequis
-## Visual Studio 2017
-## Python 2.7.15
+  **- Visual Studio 2017**
+  
+  **- Python 2.7.15**
 
 # Mise en place du projet
 Après avoir créer un compte sur gitHub, installer gitHub Desktop.
